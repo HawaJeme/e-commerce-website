@@ -1,0 +1,26 @@
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    padding: 16px;
+    box-shadow: 0 1px 3px -2px black;
+    /* background-color: #270f32; */
+}
+
+.nav-logo{
+    width: 100px;
+    height: 100px;
+}
+
+.nav-logo-title{
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 30px;
+    color: #270f32;
+    font-weight: 400;
+}
