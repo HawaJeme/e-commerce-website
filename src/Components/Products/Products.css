@@ -1,9 +1,10 @@
 .category{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, 13rem);
     grid-auto-rows: minmax(100px, auto);
-    margin-top: 4rem;
+    margin: 4rem;
     gap: 2rem;
+    justify-content: center;
 }
 
 .product-div{
@@ -24,11 +25,12 @@
 }
 
 .product-img{
-    width: 12rem;
-    height: 12rem;
+    width: 11rem;
+    height: 11rem;
 }
 
 .product-description{
+    text-align: center;
     font-size: 8px;
     color: grey;
 }
