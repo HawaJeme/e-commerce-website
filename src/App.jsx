@@ -5,7 +5,7 @@ import { Navbar } from './Components/Navbar/Navbar'
 import { Categories } from './Pages/Categories'
 import { Login } from './Pages/Login'
 import { Cart } from './Pages/Cart'
-import { ProductDetail } from './Components/ProductDetails/ProductDetail'
+import { ProductDisplay } from './Components/ProductDisplay/ProductDisplay'
 
 function App() {
   return (
@@ -19,8 +19,8 @@ function App() {
         <Route path='/electronics' element={<Categories category="electronics"/>}></Route>
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/cart' element={<Cart/>}></Route>
-        <Route path='/product' element={<ProductDetail/>}></Route>
-        <Route path=':productId' element={<ProductDetail/>}></Route>
+        <Route path='/product' element={<ProductDisplay/>}></Route>
+        <Route path='/product/:productId' element={<ProductDisplay/>}></Route>
       </Routes>
       <Footer/>
       </BrowserRouter>

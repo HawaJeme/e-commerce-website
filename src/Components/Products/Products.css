@@ -10,13 +10,10 @@
 .product-div{
     display: flex;
     flex-direction: column;
+    padding: 10px;
     align-items: center;
     cursor: pointer;
-    border: 1px solid rgb(172, 172, 172);
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border: 0.5px solid rgb(218 218 218);
     gap: 10px;
 }
 
@@ -30,7 +27,21 @@
 }
 
 .product-description{
-    text-align: center;
-    font-size: 8px;
+    display: flex;
+    align-items: center;
+    font-size: 11px;
     color: grey;
+}
+
+.product-name {
+    text-align: center;
+    font-size: 12px;
+}
+
+.product-price {
+    font-weight: 800;
+}
+
+.star-icon {
+    width: 13px;
 }
