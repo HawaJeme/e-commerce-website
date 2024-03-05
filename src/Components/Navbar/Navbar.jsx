@@ -9,17 +9,17 @@ export const Navbar = () => {
     <div className='navbar'>
       <div>
         <img className='nav-logo' src={logo} alt=''/>
-        <h3 className='nav-logo-title'>OPULENCE</h3>
+        <h5 className='nav-logo-title'>OPULENCE</h5>
       </div>
       <ul className='nav-menu'>
-        <li>Shop</li>
+        <li><Link to={"/"}>Shop</Link></li>
         <li><Link to={"/womens"}>Women</Link></li>
         <li><Link to={"/mens"}>Men</Link></li>
         <li><Link to={"/jewelery"}>Jewelery</Link></li>
         <li><Link to={"/electronics"}>Electronics</Link></li>
       </ul>
       <div className='nav-cart-login'>
-        <button><Link to={"/login"}>Login</Link></button>
+        <Link to={"/login"}><button>Login</button></Link>
         <Link to={"/cart"}><img src={cartLogo} alt=''/></Link>
         <div className='nav-cart-count'>0</div>
       </div>

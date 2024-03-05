@@ -4,10 +4,11 @@
     justify-content: center;
     align-items: center;
     height: 250px;
-    margin: 20px;
+    padding: 20px;
     gap: 20px;
-    border-top: 1px solid gray;
+    border-top: 1px solid #a9a9a9;
 }
+
 .footer-logo{
     display: flex;
     align-items: center;
@@ -20,6 +21,7 @@
 }
 
 .footer-logo-title{
+    color: #1f0437;
     padding: 0;
     margin: 0;
 }
@@ -28,5 +30,9 @@
     display: flex;
     list-style: none;
     gap: 40px;
-    font-size: 20px;
+    font-size: 16px;
+}
+
+.footer-copyright {
+    font-size: 14px;
 }

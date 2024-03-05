@@ -2,10 +2,11 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Footer } from './Components/Footer/Footer'
 import { Navbar } from './Components/Navbar/Navbar'
-import { Categories } from './Pages/Categories'
-import { Login } from './Pages/Login'
+import { Categories } from './Pages/Categories/Categories'
+import { Login } from './Pages/Login/Login'
 import { Cart } from './Pages/Cart'
 import { ProductDisplay } from './Components/ProductDisplay/ProductDisplay'
+import { Home } from './Pages/Home/Home'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
     <BrowserRouter>
       <Navbar/>
       <Routes>
+        <Route path='/' element={<Home/>}></Route>
         <Route path='/womens' element={<Categories category="women's clothing" />}></Route>
         <Route path='/mens' element={<Categories category="men's clothing"/>}></Route>
         <Route path='/jewelery' element={<Categories category="jewelery"/>}></Route>

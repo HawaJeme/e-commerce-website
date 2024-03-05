@@ -1,0 +1,17 @@
+.category {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 13rem);
+    grid-auto-rows: minmax(100px, auto);
+    margin: 4rem;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.category-title {
+    padding: 45px 0;
+    text-align: center;
+}
+
+.category-container {
+    /* background-color: #fffee0; */
+}
