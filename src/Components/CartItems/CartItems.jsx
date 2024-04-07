@@ -4,7 +4,8 @@ import deleteIcon from '../Assets/delete-icon.png'
 import { DataContext } from '../../Context/DataContext'
 
 export const CartItems = () => {
-    const {allProducts, cartItems, removeFromCart} = useContext(DataContext)
+    const {data, cartItems, removeFromCart} = useContext(DataContext)
+    // const {data, cartItems, removeFromCart} = useContext(DataContext)
   return (
     <div className='cartItems'>
         <div className='cartItems-options'>
@@ -16,7 +17,7 @@ export const CartItems = () => {
             <p>Remove</p>
         </div>
         <hr/>
-        {allProducts.map(e => {
+        {data.map(e => {
             if(cartItems[e.id] > 0){
             return (
                 <div>

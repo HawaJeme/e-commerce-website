@@ -1,8 +1,11 @@
-import React from 'react'
+import {React, useContext} from 'react'
 import './ProductDetails.css'
 import star from '../Assets/star-icon.png'
+import { DataContext } from '../../Context/DataContext'
 
 export const ProductDetails = ({product}) => {
+    
+    const {addToCart} = useContext(DataContext)
   return (
     <div className='productDetails'>
         <div className='productDetails-leftSide'>
@@ -27,7 +30,7 @@ export const ProductDetails = ({product}) => {
                 <p>XL</p>
                 <p>XXL</p>
             </div>
-            <button className='addToCart-btn'>Add to cart</button>
+            <button onClick={()=> {addToCart(product.id)}} className='addToCart-btn'>Add to cart</button>
         </div>
     </div>
   )

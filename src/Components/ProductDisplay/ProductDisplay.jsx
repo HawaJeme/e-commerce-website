@@ -6,9 +6,9 @@ import { Breadcrum } from '../Breadcrum/Breadcrum'
 import { ProductDetails } from '../ProductDetails/ProductDetails'
 
 export const ProductDisplay = (props) => {
-    const allProducts = useContext(DataContext)
+    const {data} = useContext(DataContext)
     const Id = useParams()
-    const selectedProduct = allProducts.find((e) => e.id === Number(Id.productId))
+    const selectedProduct = data.find((e) => e.id === Number(Id.productId))
     // console.log(selectedProduct)
     return (
         <>
