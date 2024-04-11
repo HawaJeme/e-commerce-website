@@ -29,15 +29,35 @@ const DataProvider = ({ children }) => {
 
     const addToCart = (itemId) =>{
       setCartItems((prev) => ({...prev, [itemId]:prev[itemId]+1}))
-      // console.log(cartItems)
     }
 
     const removeFromCart = (itemId) =>{
       setCartItems((prev) => ({...prev, [itemId]:prev[itemId]-1}))
     }
 
+    const cartTotal = () => {
+      let total = 0
+      for(const item in cartItems){
+        if(cartItems[item]>0){
+          let itemData = data.find((prod) => prod.id === Number(item))
+          total += itemData.price * cartItems[item]
+        }
+      }
+      return total
+    }
+    
+    const cartTotalItems = () => {
+      let totalItems = 0
+      for(const item in cartItems){
+        if(cartItems[item]>0){
+          totalItems += cartItems[item]
+        }
+      }
+      return totalItems
+    }
+
   console.log(cartItems)
-  const contextVal = {data, cartItems, addToCart, removeFromCart}
+  const contextVal = {data, cartItems, addToCart, removeFromCart, cartTotal, cartTotalItems}
   return (
     <DataContext.Provider value={contextVal}>
       {children}
