@@ -7,6 +7,7 @@ import { Login } from './Pages/Login/Login'
 import { Cart } from './Pages/Cart'
 import { ProductDisplay } from './Components/ProductDisplay/ProductDisplay'
 import { Home } from './Pages/Home/Home'
+// import { AuthProvider } from "./Firebase/fbcontext";
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
         <Route path='/product/:productId' element={<ProductDisplay/>}></Route>
       </Routes>
       <Footer/>
-      </BrowserRouter>
+    </BrowserRouter>
     </>
   )
 }

@@ -1,10 +1,13 @@
 import React, { createContext, useState, useEffect } from 'react';
+import { ref, set, get, onValue } from "firebase/database";
+import { database } from '../Firebase/config';
 
 const DataContext = createContext()
 
 const DataProvider = ({ children }) => {  
     const [data, setData] = useState([])
     const [cartItems, setCartItems] = useState({})
+    const cartItemsRef = ref(database, "cartItems")
 
     useEffect(()=> {
       fetch("https://fakestoreapi.com/products")
@@ -15,6 +18,13 @@ const DataProvider = ({ children }) => {
       })
       .catch((error) => {
         console.error("Error fetching data:", error)
+      })
+
+      onValue(cartItemsRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          setCartItems(data);
+        }
       })
     }, [])
 
@@ -28,11 +38,13 @@ const DataProvider = ({ children }) => {
     }
 
     const addToCart = (itemId) =>{
-      setCartItems((prev) => ({...prev, [itemId]:prev[itemId]+1}))
+      set(cartItemsRef, { ...cartItems, [itemId]: cartItems[itemId] + 1 })
     }
 
     const removeFromCart = (itemId) =>{
-      setCartItems((prev) => ({...prev, [itemId]:prev[itemId]-1}))
+      // set(cartItemsRef, cartItems)
+      // setCartItems((prev) => ({...prev, [itemId]:prev[itemId]-1}))
+      set(cartItemsRef, { ...cartItems, [itemId]: cartItems[itemId] - 1 })
     }
 
     const cartTotal = () => {
@@ -57,7 +69,15 @@ const DataProvider = ({ children }) => {
     }
 
   console.log(cartItems)
-  const contextVal = {data, cartItems, addToCart, removeFromCart, cartTotal, cartTotalItems}
+  const contextVal = {
+    data,
+    cartItems,
+    addToCart,
+    removeFromCart,
+    cartTotal,
+    cartTotalItems
+  }
+
   return (
     <DataContext.Provider value={contextVal}>
       {children}
