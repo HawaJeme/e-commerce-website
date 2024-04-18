@@ -10,11 +10,26 @@ const DataProvider = ({ children }) => {
     const cartItemsRef = ref(database, "cartItems")
 
     useEffect(()=> {
+      get(cartItemsRef)
+        .then((snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+                setCartItems(data);
+            } else {
+                const cart = getCart(data);
+                setCartItems(cart);
+                set(cartItemsRef, cart)
+            }
+        })
+        .catch((error) => {
+          console.error("Error fetching cart items data:", error)
+        }
+      )
+
       fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((json) => {
         setData(json)
-        setCartItems(getCart(json))
       })
       .catch((error) => {
         console.error("Error fetching data:", error)
@@ -38,13 +53,19 @@ const DataProvider = ({ children }) => {
     }
 
     const addToCart = (itemId) =>{
-      set(cartItemsRef, { ...cartItems, [itemId]: cartItems[itemId] + 1 })
+      setCartItems((prev) => {
+      const updatedCart = {...prev, [itemId]: prev[itemId] + 1}
+      set(cartItemsRef, updatedCart)
+      return updatedCart
+    })
     }
 
     const removeFromCart = (itemId) =>{
-      // set(cartItemsRef, cartItems)
-      // setCartItems((prev) => ({...prev, [itemId]:prev[itemId]-1}))
-      set(cartItemsRef, { ...cartItems, [itemId]: cartItems[itemId] - 1 })
+      setCartItems((prev) => {
+        const updatedCart = {...prev, [itemId]: prev[itemId] - 1}
+        set(cartItemsRef, updatedCart)
+        return updatedCart
+    })
     }
 
     const cartTotal = () => {
